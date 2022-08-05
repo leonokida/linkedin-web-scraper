@@ -2,40 +2,21 @@ import json
 import os
 from bs4 import BeautifulSoup
 from selenium import webdriver
-
-# Comment the following lines to use Firefox
-
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
-
-# Uncomment the following lines to use Firefox
-
-#from selenium.webdriver.firefox.options import Options
-#from selenium.webdriver.firefox.service import Service
-
 from dotenv import load_dotenv
 import time
 import sys
-
-# Comment the following lines to use Firefox
 
 options = webdriver.ChromeOptions()
 options.add_argument("--headless")
 service = Service("./chromedriver")
 driver = webdriver.Chrome(service=service, options=options)
 
-# Uncomment the following lines to use Firefox
-
-#options = Options()
-#options.headless = True #usado para deixar de abrir uma pagina de verdade
-#service = Service("./geckodriver")
-#driver = webdriver.Firefox(service=service, options=options)
-
-
 driver.get('https://www.linkedin.com/login/')
 
 # Gets email and password from .env file
-load_dotenv()
+load_dotenv('../.env')
 EMAIL = os.getenv('LKDN_USERNAME')
 PASSWD = os.getenv('LKDN_PASSWORD')
 
